@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, Image, TouchableOpacity} from 'react-native';
-import Color from '../res/Color';
+import Color from 'Color';
 
 const CardView = ({icon, text}) => {
   return (
@@ -9,7 +9,7 @@ const CardView = ({icon, text}) => {
       <Text style={styles.CardText}>{text}</Text>
       <Image
         style={styles.CardIconTitle}
-        source={require('../res/Image/iconTest.png')}
+        source={require('image/iconTest.png')}
       />
     </TouchableOpacity>
   );

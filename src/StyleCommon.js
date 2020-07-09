@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-const CommonStyle = StyleSheet.create({
+const StyleCommon = StyleSheet.create({
   safeArea: {
     flex: 1,
     marginStart: 4,
@@ -12,4 +12,4 @@ const CommonStyle = StyleSheet.create({
   },
 });
 
-export default CommonStyle;
+export default StyleCommon;

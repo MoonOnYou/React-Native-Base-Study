@@ -5,10 +5,10 @@ import Color from 'Color';
 const CardView = ({icon, text}) => {
   return (
     <TouchableOpacity style={styles.CordContainer}>
-      <Image style={styles.CardIconCommon} source={icon} />
+      <Image style={styles.CardIconTitle} source={icon} />
       <Text style={styles.CardText}>{text}</Text>
       <Image
-        style={styles.CardIconTitle}
+        style={styles.CardIconCommon}
         source={require('image/iconTest.png')}
       />
     </TouchableOpacity>

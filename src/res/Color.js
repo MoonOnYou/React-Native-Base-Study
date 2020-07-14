@@ -13,6 +13,7 @@ const Color = {
   GRAY: '#9f9f9f', //                  아이콘 , 텍스트 등 모든 비활성 컬러
 
   // Transparent                       (Android랑 다르게 알파값을 뒤에 넣어줌)
+  JUST_TRANSPARENT: '#ffffff00', //       걍 투명색
   ACCENT_TRANSPARENT: '#ffc10755', //  버튼 백그라운드
   RED_TRANSPARENT: '#ff000088', //     에러 백그라운드
 };

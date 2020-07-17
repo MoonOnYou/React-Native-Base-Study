@@ -30,11 +30,15 @@ const DATA = [
   },
 ];
 
-function Item({title}) {
+function Item({id, title, selected, onSelect}) {
   return (
     <TouchableOpacity
-      onPress={() => Alert.alert('우울해....')}
-      style={[styles.container, styles.item]}>
+      onPress={() => onSelect(id)}
+      style={[
+        styles.container,
+        styles.item,
+        {backgroundColor: selected ? '#0f00ff' : '#ff0fff'},
+      ]}>
       <Text> {title} </Text>
       <Button
         title="우아앙.."
@@ -45,6 +49,15 @@ function Item({title}) {
 }
 
 export default function Tab4() {
+  const [selected, setSelected] = React.useState(new Map());
+  const onSelect = React.useCallback(
+    (id) => {
+      const newSelected = new Map(selected);
+      newSelected.set(id, !selected.get(id));
+      setSelected(newSelected);
+    },
+    [selected],
+  );
   return (
     <View style={styles.container}>
       <View style={[styles.container, styles.horizontal]}>
@@ -80,7 +93,16 @@ export default function Tab4() {
         />
         <FlatList
           data={DATA}
-          renderItem={({item}) => <Item title={item.title} />}
+          renderItem={({item}) => (
+            <Item
+              id={item.id}
+              title={item.title}
+              selected={!!selected.get(item.id)}
+              onSelect={onSelect}
+            />
+          )}
+          keyExtractor={(item) => item.id} // 애는...?
+          extraData={selected} // 앤멀까..
           ItemSeparatorComponent={() => <Separator />}
         />
         <FlatList

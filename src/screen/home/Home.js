@@ -1,9 +1,6 @@
-import React from 'react';
-import {SafeAreaView} from 'react-native';
-import StringKr from 'StringKr';
-import StyleCommon from 'StyleCommon';
-import {CardView, Button} from 'components';
-import {NavigationContainer} from '@react-navigation/native';
+import React, {useState} from 'react';
+import {StyleSheet, View, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 import Tab1 from 'screen/home/tab1/Tab1';
@@ -13,16 +10,54 @@ import Tab4 from 'screen/home/tab4/Tab4';
 
 const Tab = createMaterialTopTabNavigator();
 
-// 메인탭 3번째 화면 여기다 일단 옮겨 놓음
+function WriteBtn() {
+  const [selected, setSelected] = useState(false);
+
+  return (
+    <TouchableOpacity
+      onPress={() => setSelected(!selected)}
+      style={[
+        styles.writeBtn,
+        {backgroundColor: selected ? '#00ff00' : '#ff0000'},
+      ]}>
+      <Icon
+        name={selected ? 'pencil' : 'close'}
+        size={24}
+        color={selected ? '#ff0000' : '#00ff00'}
+      />
+    </TouchableOpacity>
+  );
+}
+
 const HomeScreen = ({navigation}) => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Tab1" component={Tab1} />
-      <Tab.Screen name="Tab2" component={Tab2} />
-      <Tab.Screen name="Tab3" component={Tab3} />
-      <Tab.Screen name="Tab4" component={Tab4} />
-    </Tab.Navigator>
+    <View style={styles.container}>
+      <Tab.Navigator>
+        <Tab.Screen name="Tab1" component={Tab1} />
+        <Tab.Screen name="Tab2" component={Tab2} />
+        <Tab.Screen name="Tab3" component={Tab3} />
+        <Tab.Screen name="Tab4" component={Tab4} />
+      </Tab.Navigator>
+      <WriteBtn />
+    </View>
   );
 };
 
 export default HomeScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  writeBtn: {
+    width: 48,
+    height: 48,
+    borderRadius: 50,
+    backgroundColor: '#00ff00',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 16,
+    right: 16,
+  },
+});

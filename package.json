@@ -23,6 +23,7 @@
     "react-native-screens": "^2.9.0",
     "react-native-tab-view": "^2.14.4",
     "react-native-timeline-flatlist": "^0.7.3",
+    "react-native-vector-icons": "^7.0.0",
     "react-navigation": "^4.4.0"
   },
   "devDependencies": {

@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 import Tab1 from 'screen/home/tab1/Tab1';
@@ -19,13 +18,8 @@ function WriteBtn() {
       style={[
         styles.writeBtn,
         {backgroundColor: selected ? '#00ff00' : '#ff0000'},
-      ]}>
-      <Icon
-        name={selected ? 'pencil' : 'close'}
-        size={24}
-        color={selected ? '#ff0000' : '#00ff00'}
-      />
-    </TouchableOpacity>
+      ]}
+    />
   );
 }
 

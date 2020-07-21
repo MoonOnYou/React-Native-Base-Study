@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, TouchableOpacity, Text} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 import Tab1 from 'screen/home/tab1/Tab1';
@@ -13,13 +13,21 @@ function WriteBtn() {
   const [selected, setSelected] = useState(false);
 
   return (
-    <TouchableOpacity
-      onPress={() => setSelected(!selected)}
-      style={[
-        styles.writeBtn,
-        {backgroundColor: selected ? '#00ff00' : '#ff0000'},
-      ]}
-    />
+    <View style={styles.containerWrite}>
+      <View
+        style={[selected ? styles.visibleWriteDetail : styles.goneWriteDetail]}>
+        <View style={styles.containerRow}>
+          <Text>일단 적어봅니다.. </Text>
+        </View>
+      </View>
+      <TouchableOpacity
+        onPress={() => setSelected(!selected)}
+        style={[
+          styles.btnWrite,
+          {backgroundColor: selected ? '#00ff00' : '#ff0000'},
+        ]}
+      />
+    </View>
   );
 }
 
@@ -43,7 +51,28 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  writeBtn: {
+  containerRow: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  containerWrite: {
+    width: 200,
+    height: 200,
+    position: 'absolute',
+    bottom: 8,
+    right: 8,
+  },
+  iconWriteDetail: {},
+  textWriteDetail: {},
+  visibleWriteDetail: {
+    width: 100,
+    height: 100,
+  },
+  goneWriteDetail: {
+    width: 0,
+    height: 0,
+  },
+  btnWrite: {
     width: 48,
     height: 48,
     borderRadius: 50,
@@ -51,7 +80,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
-    bottom: 16,
-    right: 16,
+    bottom: 8,
+    right: 8,
   },
 });
